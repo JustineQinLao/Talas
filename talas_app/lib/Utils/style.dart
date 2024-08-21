@@ -12,6 +12,7 @@ class CustomColors {
 
 }
 
+
 class CustomFonts {
   static TextStyle iniText(
     {
@@ -77,6 +78,26 @@ class CustomButtons {
         fontsize: fontsize,
         fontWeight: fontWeight
       )
+    );
+  }
+
+}
+
+
+class CustomIcons {
+  static Icon styledIcon(
+    {
+      required IconData icon,
+      Color color = CustomColors.darkbrown,
+      double size = 30,
+      double borderRadius = 0.0
+    }
+  ){
+    return Icon(
+      icon,
+      color: color,
+      size: size,
+      
     );
   }
 

@@ -150,6 +150,8 @@ class _CreateAvatarState extends State<CreateAvatar> {
                             }else{
                               final prefs = await SharedPreferences.getInstance();
                               await prefs.setBool('createdAvatar', true);
+                              await prefs.setString('name', _nameController.text);
+                              await prefs.setString('avatar', _selectedAvatar);
 
                               Navigator.of(context).pushReplacementNamed('/');
                             }

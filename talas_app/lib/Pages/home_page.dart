@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:talas_app/Pages/MainPages/home.dart';
 import 'package:talas_app/Utils/style.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,24 +10,60 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
+  late TabController _tabController;
   void initState() {
     super.initState();
-    check();
+    _tabController = TabController(length: 4, vsync: this);
+    initializePreferences();
   }
-  void check() async {
+  void initializePreferences() async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setBool('started', false);
     prefs.setBool('createdAvatar', false);
   }
   @override
   Widget build(BuildContext context) {
+
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
     
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: CustomColors.blue,
+    return DefaultTabController(
+      length: 4,
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(height * 0.08),
+          child: AppBar(
+            backgroundColor: CustomColors.blue,
+            bottom: TabBar(
+              controller: _tabController,
+              tabs: [
+                Tab(icon: CustomIcons.styledIcon(icon: Icons.home_outlined)),
+                Tab(icon: CustomIcons.styledIcon(icon: Icons.mobile_friendly_outlined)),
+                Tab(icon: CustomIcons.styledIcon(icon: Icons.info_outline)),
+                Tab(icon: CustomIcons.styledIcon(icon: Icons.menu)),
+                
+              ],
+            )
+          ),
+        ),
+        body: TabBarView(
+          controller: _tabController,
+          children: [
+
+            HomeTab(controllerTab: _tabController,),  
+            Center(child: Text('Guide')),
+            Center(child: Text('About')),
+            Center(child: Text('Menu')),
+          ],
+        ),
       ),
-      body: Container(),
     );
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
   }
 }
