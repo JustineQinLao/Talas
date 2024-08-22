@@ -20,7 +20,7 @@ class _GetStartedState extends State<GetStarted> {
                 flex: 7,
                 child: Container(
                    decoration: const BoxDecoration(
-                     color: CustomColors.blue,
+                     color: CustomColors.brown,
                     //  borderRadius: BorderRadius.only(
                     //    bottomRight: Radius.circular(40.0),
                     //  ),

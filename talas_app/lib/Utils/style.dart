@@ -10,6 +10,13 @@ class CustomColors {
   static const Color cream = Color.fromARGB(255, 243, 220, 196);
   static const Color lightcream = Color.fromARGB(255, 230, 220, 196);
 
+  static const Color green = Color.fromARGB(255, 0, 128, 0);
+
+  static const Color orange = Color.fromARGB(255, 253, 128, 51);
+  static const Color white = Color.fromARGB(255, 255, 255, 255);
+  //yellow
+  static const Color yellow = Color.fromARGB(255, 255, 255, 0);
+
 }
 
 
@@ -22,6 +29,20 @@ class CustomFonts {
     }
   ) {
     return GoogleFonts.cuprum(
+      fontSize: fontsize,
+      fontWeight: fontWeight,
+      color: color
+    );
+  }
+
+  static TextStyle quizText(
+    {
+      double fontsize = 20,
+      FontWeight fontWeight = FontWeight.w400,
+      Color color = Colors.black
+    }
+  ) {
+    return GoogleFonts.permanentMarker(
       fontSize: fontsize,
       fontWeight: fontWeight,
       color: color
@@ -67,12 +88,16 @@ class CustomButtons {
       FontWeight fontWeight = FontWeight.w400,
       double elevation = 0,
       double width = 170,
-      double height = 50
+      double height = 50,
+      double borderRadius = 30.0
     }
   ){
     return ElevatedButton.styleFrom(
       elevation: elevation,
       minimumSize: Size(width, height),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(borderRadius)
+      ),
       backgroundColor: backgroundColor,
       textStyle: CustomFonts.buttonText(
         fontsize: fontsize,
@@ -88,7 +113,7 @@ class CustomIcons {
   static Icon styledIcon(
     {
       required IconData icon,
-      Color color = CustomColors.darkbrown,
+      Color color = CustomColors.white,
       double size = 30,
       double borderRadius = 0.0
     }
@@ -97,7 +122,7 @@ class CustomIcons {
       icon,
       color: color,
       size: size,
-      
+
     );
   }
 

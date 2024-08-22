@@ -34,9 +34,11 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(height * 0.08),
           child: AppBar(
-            backgroundColor: CustomColors.blue,
+            backgroundColor: CustomColors.darkbrown,
             bottom: TabBar(
               controller: _tabController,
+              indicatorColor: CustomColors.white,
+              indicatorSize: TabBarIndicatorSize.tab,
               tabs: [
                 Tab(icon: CustomIcons.styledIcon(icon: Icons.home_outlined)),
                 Tab(icon: CustomIcons.styledIcon(icon: Icons.mobile_friendly_outlined)),

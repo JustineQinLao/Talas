@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:talas_app/Pages/MainPages/kaalaman.dart';
+import 'package:talas_app/Pages/QuizPages/quiz_page.dart';
 import 'package:talas_app/Utils/style.dart';
 
 class HomeTab extends StatefulWidget {
@@ -16,15 +18,16 @@ class _HomeTabState extends State<HomeTab> {
 
 
   final List<Map<String, String>> items = [
-    {'image': 'assets/images/avatar.png', 'text': 'Item 1'},
-    {'image': 'assets/images/avatar.png', 'text': 'Item 1'},
-    {'image': 'assets/images/avatar.png', 'text': 'Item 1'},
-    {'image': 'assets/images/avatar.png', 'text': 'Item 1'},
+    {'image': 'assets/images/home_cat1.png', 'text': 'Kaalaman sa \nAklat at Limbag'},
+    {'image': 'assets/images/home_cat2.png', 'text': 'Kamalayang \nPonolohiya'},
+    {'image': 'assets/images/home_cat3.png', 'text': 'Mga Titik \nat Alpabeto'},
+    {'image': 'assets/images/home_cat4.png', 'text': 'Talasalitaan'},
   ];
 
   void initState() {
-    super.initState();
     getUserInfo();
+    super.initState();
+    
   }
 
   void getUserInfo() async {
@@ -84,11 +87,12 @@ class _HomeTabState extends State<HomeTab> {
                           child: CircleAvatar(
                             backgroundColor: CustomColors.cream,
                             radius: width * 0.04,
-                            child: Icon(
-                              Icons.camera_alt,
-                              size: width * 0.04,
-                              color: CustomColors.darkbrown,
-                            ),
+                            child: Text('1', style: CustomFonts.iniText(fontsize: width * 0.04, color: CustomColors.darkbrown, fontWeight: FontWeight.bold)),
+                            // Icon(
+                            //   Icons.camera_alt,
+                            //   size: width * 0.04,
+                            //   color: CustomColors.darkbrown,
+                            // ),
                           ),
                         ),
                         radius: width * 0.1,
@@ -104,8 +108,18 @@ class _HomeTabState extends State<HomeTab> {
           SizedBox(height: height * 0.05,),
 
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
             Text("KATEGORYA", style: CustomFonts.iniText(fontsize: width * 0.08, color: CustomColors.darkbrown, fontWeight: FontWeight.w500)),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => QuizHomePage()));
+              },
+              style: CustomButtons.buttonStyle(textColor: CustomColors.cream, width: width * 0.25, height: height * 0.055),
+              child: Text('Pagsasanay', style: CustomFonts.buttonText(fontsize: width * 0.04, fontWeight: FontWeight.w800)),
+              
+              )
           ]
           ),
 
@@ -125,23 +139,57 @@ class _HomeTabState extends State<HomeTab> {
                 itemCount: items.length,
                 itemBuilder: (context, index) {
                   final item = items[index];
-                  return Container(
-                    padding: EdgeInsets.symmetric(vertical: width * 0.04),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: CustomColors.cream
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Image.asset(
-                          item['image']!,
-                          height: 80, // Adjust height as needed
-                          width: 80,  // Adjust width as needed
+                  return GestureDetector(
+                    onTap: () {
+                      try {
+                        if(index == 0) {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => Category1()));
+                        }else if(index == 1) {
+                          
+                        }
+                        else if(index == 2) {
+                          
+                        }
+                        else if(index == 3) {
+                          
+                        }
+
+                      }
+                      catch(e) {
+                        print(e);
+                      }
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: width * 0.04),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        image: DecorationImage(
+                          image: AssetImage(item['image']!),
+                          fit: BoxFit.cover
                         ),
-                        SizedBox(height: 8),
-                        Text(item['text']!),
-                      ],
+                        color: CustomColors.cream
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          // Image.asset(
+                          //   'assets/images/background.png',
+                          //   // Adjust height as needed
+                          //   height: width * 0.2,
+                          //   width: width * 0.2,  // Adjust width as needed
+                          // ),
+                          SizedBox(height: 8),
+                    
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(item['text']!,
+                                  style: CustomFonts.iniText(fontsize: width * 0.04, color: CustomColors.darkbrown, fontWeight: FontWeight.w500),
+                              textAlign: TextAlign.center,),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },

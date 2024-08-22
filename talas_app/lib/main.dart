@@ -9,8 +9,8 @@ import 'package:talas_app/Utils/style.dart';
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
-      statusBarColor: CustomColors.blue,
-      systemNavigationBarColor: CustomColors.blue
+      statusBarColor: CustomColors.darkbrown,
+      systemNavigationBarColor: CustomColors.darkbrown
     )
   );
   runApp(const MyApp());
