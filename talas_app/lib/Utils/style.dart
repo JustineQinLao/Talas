@@ -9,6 +9,7 @@ class CustomColors {
   static const Color brown = Color.fromARGB(255, 192, 109, 74);
   static const Color cream = Color.fromARGB(255, 243, 220, 196);
   static const Color lightcream = Color.fromARGB(255, 230, 220, 196);
+  static const Color darkcream = Color.fromARGB(255, 250,184,133);
 
   static const Color green = Color.fromARGB(255, 0, 128, 0);
 
@@ -16,6 +17,7 @@ class CustomColors {
   static const Color white = Color.fromARGB(255, 255, 255, 255);
   //yellow
   static const Color yellow = Color.fromARGB(255, 255, 255, 0);
+  static const Color black = Color.fromARGB(255, 0, 0, 0);
 
 }
 
@@ -63,6 +65,29 @@ class CustomFonts {
       );
     }
   
+  static TextStyle categoryText(
+    {
+      double fontsize = 20,
+      FontWeight fontWeight = FontWeight.w400,
+      Color color = Colors.black,
+      height = 1.1
+
+    }
+  ) {
+    return GoogleFonts.cuprum(
+      fontSize: fontsize,
+      fontWeight: fontWeight,
+      color: color,
+      height: height,
+      shadows: [
+        Shadow(
+          offset: Offset(6.0,6.0), // Offset of the shadow
+          blurRadius: 2.0, // Blur radius of the shadow
+          color: CustomColors.darkbrown, // Color of the shadow
+        ),
+      ],
+    );
+  }
 
   static TextStyle buttonText(
     {

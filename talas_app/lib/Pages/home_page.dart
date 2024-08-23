@@ -35,6 +35,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           preferredSize: Size.fromHeight(height * 0.08),
           child: AppBar(
             backgroundColor: CustomColors.darkbrown,
+            leading: Container(),
             bottom: TabBar(
               controller: _tabController,
               indicatorColor: CustomColors.white,
@@ -53,10 +54,10 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           controller: _tabController,
           children: [
 
-            HomeTab(controllerTab: _tabController,),  
-            Center(child: Text('Guide')),
-            Center(child: Text('About')),
-            Center(child: Text('Menu')),
+            SingleChildScrollView(child: HomeTab(controllerTab: _tabController,)),  
+            SingleChildScrollView(child: Center(child: Text('Guide'))),
+            SingleChildScrollView(child: Center(child: Text('About'))),
+            SingleChildScrollView(child: Center(child: Text('Menu'))),
           ],
         ),
       ),
