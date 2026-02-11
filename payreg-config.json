@@ -1,5 +1,5 @@
 {
-  "enabled": true,
+  "enabled": false,
   "message": "SSI Payroll Suite is active",
   "version": "1.0.0"
 }
