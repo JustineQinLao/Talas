@@ -1,6 +1,11 @@
 {
   "codes": [
     {
+      "code": "test",
+      "key": "test123!",
+      "is_active": true
+    },
+    {
       "code": "CODE0218943c",
       "key": "asd@XC@!RTertere",
       "is_active": true
