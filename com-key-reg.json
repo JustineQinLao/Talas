@@ -3,7 +3,7 @@
     {
       "code": "test",
       "key": "test123!",
-      "is_active": true
+      "is_active": false
     },
     {
       "code": "client_001",
