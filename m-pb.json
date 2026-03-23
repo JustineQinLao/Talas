@@ -1,0 +1,14 @@
+{
+  "codes": [
+    {
+      "code": "test",
+      "key": "test123!",
+      "is_active": true
+    },
+    {
+      "code": "client_001",
+      "key": "client031626",
+      "is_active": true
+    }
+  ]
+}
